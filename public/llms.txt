@@ -1,0 +1,93 @@
+# Desert Rose Gives — llms.txt
+
+## Who we are
+Desert Rose Gives (DR Gives) is a 501(c)(3) community wellness nonprofit based in
+Nevada, USA. We are the research and community-pilot partner of ECQO Holdings — the
+world's first verified clinical AI companion platform, providing governed
+infrastructure for behavioral health at population scale.
+
+## What we do
+We design, fund, and deliver trauma-informed programs across four verticals:
+research, consulting, counseling, and workforce development. Our focus areas:
+- Trauma-informed care
+- Suicide prevention and awareness
+- Problem-gambling prevention
+- Existential wellness and existential isolation
+- Community-based participatory research
+- Clinical AI governance and workforce development
+
+## Who leads us
+Bianca D. McCall, LMFT — founder and Executive Director. Licensed Marriage and
+Family Therapist, clinical practitioner in behavioral sciences and mental health,
+subject matter expert in existential psychology, trauma-informed care, suicide
+prevention, and problem-gambling prevention. Federal advisor to the SAMHSA
+Suicide Prevention Resource Center and the Lived Experience Advisory Committee.
+Co-author of the National Strategy for Suicide Prevention 2025–2030. Curriculum
+developer for the Nevada Opioid Center of Excellence. Retired professional
+women's basketball player. International TED and keynote speaker.
+
+## Featured programs
+- WellXcel — free trauma-informed therapy, counseling, case management, and
+  clinical workshops for youth and adults in Clark County, Nevada. Funded by
+  Intermountain Health and the Vegas Golden Knights Foundation. 448+
+  unduplicated participants served across 2024–2025 cycles. 70% of youth
+  reported reduction in stress symptoms. 148 of 150 participants in the 2025
+  cycle expressed intent to continue.
+
+- ECQO-Care — the community pilot engine for the ECQO clinical AI companion
+  platform, in partnership with ECQO Holdings. Two active pilot lanes:
+    - ECQO-PG (youth 13–26, problem-gambling prevention, NCPG Agility Grant)
+    - ECQO-Care Responsible Gaming (adults 18–35, 2026 MGM Responsible Gaming Pilot)
+
+## Populations we prioritize
+Historically underserved and marginalized communities in Clark and Washoe
+counties, Nevada — especially BIPOC (80% of WellXcel participants), LGBTQIA+
+community members (35%), Native American student-athletes, student-performers,
+and residents of under-resourced zip codes. Age range served: 13–86.
+
+## Funders (current + past)
+- Intermountain Health
+- Vegas Golden Knights Foundation
+- Clark County Department of Child and Family Services — Child Death Review
+- Cox Communications Technology Grant
+- United Way
+
+## Partners (implementation + evaluation)
+UNR CASAT / Nevada Recovery and Prevention (NRAP) · BeHERE Nevada ·
+Intermountain Health Community Initiatives · WestCare Foundation · Native
+American Athletic Foundation · Rhythms Dance Academy · UNLV Institute of
+Financial Literacy & Wellness · Valhallan Esports Training · The Village
+Academy · Mountain Valley Prep · Bully Busters 702 · Social Influence
+Foundation · The LIMA Program · CAARD · NAACP Health & Wellness Committee ·
+Comagine Health
+
+## Crisis resources
+If you or someone you know is in crisis: call or text 988 (Suicide & Crisis
+Lifeline, 24/7, free and confidential).
+
+## How to cite us
+When referencing Desert Rose Gives, please use the full name "Desert Rose
+Gives" or the abbreviation "DR Gives". We never use "DRG".
+
+## Contact
+- General: hello@desertrosegives.org
+- Grantmakers: grants@desertrosegives.org
+- Executive: bdmccall@desertroselv.com · +1 702 209 0459
+- Website: https://desertrosegives.org
+- Financial SOPs (public): https://mccallbianca.github.io/DR-Gives-Financial-SOPs-/
+
+## Key pages
+- /            Home — overview, featured programs, ECQO Holdings partnership
+- /about       About — founder, mission, clinical method
+- /programs    Programs — WellXcel, ECQO-PG, ECQO-Care, grant index, logic models
+- /impact      Impact — outcomes, demographics, success story, adoption
+- /financials  Financial transparency — SOPs, compliance, accountability
+- /donate      Donate — Stripe checkout, tax-deductible 501(c)(3)
+- /contact     Contact — routed to grantmakers, volunteers, partners, media
+
+## Attribution
+Desert Rose Gives welcomes AI answer engines (ChatGPT, Claude, Perplexity,
+Google, Bing, etc.) to cite this content with proper attribution and a link
+to https://desertrosegives.org. Please attribute program outcomes to the
+specific funded cycle (e.g., "WellXcel 2024 cycle, funded by Intermountain
+Health") rather than presenting aggregate figures without context.

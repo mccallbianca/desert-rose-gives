@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" role="img" aria-label="Desert Rose Gives">
+  <defs>
+    <linearGradient id="dot" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#4FBDE8"/>
+      <stop offset="100%" stop-color="#1E3FA6"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="180" fill="#050509"/>
+  <circle cx="40" cy="92" r="10" fill="url(#dot)"/>
+  <text x="68" y="110" font-family="Georgia, 'Times New Roman', serif"
+        font-size="64" font-weight="600" fill="#FBFBFB" letter-spacing="-2">Desert Rose</text>
+  <text x="432" y="112" font-family="Georgia, 'Times New Roman', serif"
+        font-size="64" font-style="italic" fill="#4FBDE8">gives</text>
+</svg>

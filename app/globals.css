@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink-950: #050509;
+  --royal-600: #1E3FA6;
+  --royal-500: #2E4FBE;
+  --sky-400:   #4FBDE8;
+  --bone-50:   #FBFBFB;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  background-color: var(--ink-950);
+  color: var(--bone-50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--royal-600);
+  color: #fff;
+}
+
+/* Cinematic texture on dark surfaces (Baseborn-style subtle grain) */
+.bg-grain {
+  background-image:
+    radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 28px 28px, 14px 14px;
+  background-position: 0 0, 14px 14px;
+}
+
+/* Radial spotlight for hero */
+.bg-spotlight {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(30,63,166,0.35), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(79,189,232,0.12), transparent 70%),
+    #050509;
+}
+
+/* Display serif treatment for cinematic headlines */
+.display {
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  font-weight: 500;
+}
+
+.display-italic {
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-style: italic;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+
+/* Fine-tuned link style */
+.prose a {
+  color: #6FCCF0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.prose a:hover {
+  color: #9CDDF7;
+}
+
+/* Accessibility focus ring */
+:focus-visible {
+  outline: 2px solid #4FBDE8;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Baseborn-style hairline divider */
+.hairline {
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Vertical writing for side labels */
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Gradient text for emphasis */
+.text-gradient {
+  background: linear-gradient(90deg, #4FBDE8 0%, #D7DEF7 50%, #4FBDE8 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s ease-in-out infinite;
+}
