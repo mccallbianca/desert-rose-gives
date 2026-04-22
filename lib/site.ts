@@ -27,7 +27,7 @@ export const SITE = {
   },
   paypalDonateUrl:
     process.env.NEXT_PUBLIC_PAYPAL_DONATE_URL ||
-    'https://www.paypal.com/donate?business=hello@desertrosegives.org&item_name=Desert+Rose+Gives&no_recurring=0&currency_code=USD',
+    'https://www.paypal.com/ncp/payment/W2UCZXC2XA3NC',
   social: {
     instagram: '',
     linkedin: '',
