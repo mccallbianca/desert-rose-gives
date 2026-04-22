@@ -1,100 +1,281 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import { Suspense, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
-const INTENTS = [
-  { value: 'general', label: 'General inquiry' },
-  { value: 'grant', label: 'Grantmaker / foundation' },
-  { value: 'volunteer', label: 'Volunteer / navigator' },
-  { value: 'partner', label: 'Clinical / research partner' },
-  { value: 'speaking', label: 'Media / speaking request' },
+const INTERESTS = [
+  { value: 'volunteer', label: 'Volunteer' },
+  { value: 'partner', label: 'Partner' },
+  { value: 'donate', label: 'Donate' },
+  { value: 'media', label: 'Media' },
+  { value: 'refer', label: 'Refer someone' },
+  { value: 'other', label: 'Other' },
 ];
 
 function ContactFormInner() {
   const params = useSearchParams();
-  const defaultIntent = params.get('intent') || 'general';
-
-  const [intent, setIntent] = useState(defaultIntent);
-  const [name, setName] = useState('');
+  const preset = params.get('intent') || '';
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [org, setOrg] = useState('');
+  const [interest, setInterest] = useState(
+    INTERESTS.find((i) => i.value === preset)?.value || '',
+  );
+  const [organization, setOrganization] = useState('');
   const [message, setMessage] = useState('');
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<
+    'idle' | 'submitting' | 'success' | 'error'
+  >('idle');
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  /**
-   * For MVP we use a mailto: open so no backend email wiring is required.
-   * Swap to a POST handler (e.g. Resend, Formspree, or /api/contact) when ready.
-   */
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const routeTo =
-      intent === 'grant' ? 'grants@desertrosegives.org' : 'hello@desertrosegives.org';
-    const subject = encodeURIComponent(
-      `[DR Gives · ${INTENTS.find((i) => i.value === intent)?.label}] — ${name || 'New inquiry'}`
+  function validate() {
+    const e: Record<string, string> = {};
+    if (!firstName.trim()) e.firstName = 'Please enter your first name.';
+    if (!lastName.trim()) e.lastName = 'Please enter your last name.';
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      e.email = 'Please enter a valid email address.';
+    if (!interest) e.interest = 'Please choose an interest area.';
+    if (!message.trim() || message.trim().length < 20)
+      e.message = 'Please tell us a little more, at least 20 characters.';
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  }
+
+  async function handleSubmit(ev: React.FormEvent) {
+    ev.preventDefault();
+    if (!validate()) return;
+    setStatus('submitting');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          interest,
+          organization,
+          message,
+        }),
+      });
+      if (!res.ok) throw new Error('Failed');
+      setStatus('success');
+    } catch {
+      setStatus('error');
+    }
+  }
+
+  if (status === 'success') {
+    return (
+      <div
+        role="status"
+        aria-live="polite"
+        className="card-cream border-l-4 border-dr-success"
+      >
+        <h3 className="text-dr-ink mb-2">Thank you.</h3>
+        <p className="text-dr-ink">
+          We received your message and a real human on our team will read every
+          word. We aim to reply within three to five business days.
+        </p>
+      </div>
     );
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nOrganization: ${org}\nIntent: ${intent}\n\n${message}`
-    );
-    window.location.href = `mailto:${routeTo}?subject=${subject}&body=${body}`;
-    setSent(true);
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-white/10 bg-ink-900/50 p-8 md:p-10">
-      <div>
-        <label className="text-[11px] uppercase tracking-[0.2em] text-sky-400">I am reaching out as…</label>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {INTENTS.map((i) => (
-            <button
-              type="button"
-              key={i.value}
-              onClick={() => setIntent(i.value)}
-              className={`rounded-full px-4 py-2 text-xs uppercase tracking-wide transition-colors ${
-                intent === i.value
-                  ? 'bg-royal-600 text-bone-50 border border-sky-400'
-                  : 'border border-white/10 text-bone-200 hover:border-sky-400/60'
-              }`}
-            >
-              {i.label}
-            </button>
-          ))}
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      className="card-surface space-y-5"
+      aria-describedby="contact-form-privacy"
+    >
+      <div className="grid gap-5 md:grid-cols-2">
+        <div>
+          <label
+            htmlFor="first-name"
+            className="block text-sm font-medium text-dr-ink mb-1"
+          >
+            First name <span aria-hidden="true">*</span>
+            <span className="sr-only">(required)</span>
+          </label>
+          <input
+            id="first-name"
+            name="firstName"
+            type="text"
+            autoComplete="given-name"
+            required
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            aria-invalid={!!errors.firstName}
+            aria-describedby={
+              errors.firstName ? 'first-name-error' : undefined
+            }
+            className="w-full rounded border border-dr-mist bg-dr-white px-3 py-2 text-dr-ink focus:border-dr-royal"
+          />
+          {errors.firstName && (
+            <p id="first-name-error" className="mt-1 text-sm text-dr-error">
+              {errors.firstName}
+            </p>
+          )}
+        </div>
+        <div>
+          <label
+            htmlFor="last-name"
+            className="block text-sm font-medium text-dr-ink mb-1"
+          >
+            Last name <span aria-hidden="true">*</span>
+            <span className="sr-only">(required)</span>
+          </label>
+          <input
+            id="last-name"
+            name="lastName"
+            type="text"
+            autoComplete="family-name"
+            required
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            aria-invalid={!!errors.lastName}
+            aria-describedby={errors.lastName ? 'last-name-error' : undefined}
+            className="w-full rounded border border-dr-mist bg-dr-white px-3 py-2 text-dr-ink focus:border-dr-royal"
+          />
+          {errors.lastName && (
+            <p id="last-name-error" className="mt-1 text-sm text-dr-error">
+              {errors.lastName}
+            </p>
+          )}
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <Field label="Name" value={name} onChange={setName} required />
-        <Field label="Email" value={email} onChange={setEmail} type="email" required />
+      <div>
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-dr-ink mb-1"
+        >
+          Email address <span aria-hidden="true">*</span>
+          <span className="sr-only">(required)</span>
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? 'email-error' : undefined}
+          className="w-full rounded border border-dr-mist bg-dr-white px-3 py-2 text-dr-ink focus:border-dr-royal"
+        />
+        {errors.email && (
+          <p id="email-error" className="mt-1 text-sm text-dr-error">
+            {errors.email}
+          </p>
+        )}
       </div>
-      <Field label="Organization (optional)" value={org} onChange={setOrg} />
 
       <div>
-        <label className="text-[11px] uppercase tracking-[0.2em] text-sky-400">Message</label>
+        <label
+          htmlFor="interest"
+          className="block text-sm font-medium text-dr-ink mb-1"
+        >
+          Interest area <span aria-hidden="true">*</span>
+          <span className="sr-only">(required)</span>
+        </label>
+        <select
+          id="interest"
+          name="interest"
+          required
+          value={interest}
+          onChange={(e) => setInterest(e.target.value)}
+          aria-invalid={!!errors.interest}
+          aria-describedby={errors.interest ? 'interest-error' : undefined}
+          className="w-full rounded border border-dr-mist bg-dr-white px-3 py-2 text-dr-ink focus:border-dr-royal"
+        >
+          <option value="">Choose an interest area</option>
+          {INTERESTS.map((i) => (
+            <option key={i.value} value={i.value}>
+              {i.label}
+            </option>
+          ))}
+        </select>
+        {errors.interest && (
+          <p id="interest-error" className="mt-1 text-sm text-dr-error">
+            {errors.interest}
+          </p>
+        )}
+      </div>
+
+      <div>
+        <label
+          htmlFor="organization"
+          className="block text-sm font-medium text-dr-ink mb-1"
+        >
+          Organization or community affiliation{' '}
+          <span className="text-dr-slate text-xs">(optional)</span>
+        </label>
+        <input
+          id="organization"
+          name="organization"
+          type="text"
+          autoComplete="organization"
+          value={organization}
+          onChange={(e) => setOrganization(e.target.value)}
+          className="w-full rounded border border-dr-mist bg-dr-white px-3 py-2 text-dr-ink focus:border-dr-royal"
+        />
+      </div>
+
+      <div>
+        <label
+          htmlFor="message"
+          className="block text-sm font-medium text-dr-ink mb-1"
+        >
+          Message <span aria-hidden="true">*</span>
+          <span className="sr-only">(required, minimum 20 characters)</span>
+        </label>
         <textarea
+          id="message"
+          name="message"
+          required
+          minLength={20}
+          rows={6}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          required
-          rows={6}
-          className="mt-3 w-full rounded-xl border border-white/10 bg-ink-800/40 px-5 py-4 text-bone-50 placeholder:text-bone-300 focus:border-sky-400 outline-none resize-y"
-          placeholder="Tell us what you need — grant scope, partnership interest, volunteer availability, etc."
+          aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? 'message-error' : undefined}
+          className="w-full rounded border border-dr-mist bg-dr-white px-3 py-2 text-dr-ink focus:border-dr-royal"
         />
+        {errors.message && (
+          <p id="message-error" className="mt-1 text-sm text-dr-error">
+            {errors.message}
+          </p>
+        )}
       </div>
 
       <button
         type="submit"
-        className="rounded-full bg-royal-600 hover:bg-royal-700 px-8 py-4 text-sm font-semibold uppercase tracking-wide text-bone-50 transition-colors"
+        disabled={status === 'submitting'}
+        className="btn-primary"
       >
-        Open message
+        {status === 'submitting' ? 'Sending...' : 'Send message'}
       </button>
-      {sent && (
-        <p className="text-sm text-sky-400">
-          Your email client should be opening. If it did not, email us directly at{' '}
-          {intent === 'grant' ? 'grants@desertrosegives.org' : 'hello@desertrosegives.org'}.
+
+      {status === 'error' && (
+        <p role="alert" className="text-sm text-dr-error">
+          Something went wrong sending your message. Please try again, or email
+          us directly at{' '}
+          <a href="mailto:hello@desertrosegives.org">
+            hello@desertrosegives.org
+          </a>
+          .
         </p>
       )}
-      <p className="text-xs text-bone-300 leading-relaxed">
-        We reply within two business days for grant inquiries and within five business days for
-        general inquiries. For urgent crisis needs, please call or text 988 directly.
+
+      <p id="contact-form-privacy" className="text-xs text-dr-slate">
+        Your information is only used to respond to your message and will not
+        be sold or shared. See the{' '}
+        <a href="/privacy" className="underline">
+          privacy policy
+        </a>{' '}
+        for details.
       </p>
     </form>
   );
@@ -102,35 +283,8 @@ function ContactFormInner() {
 
 export default function ContactForm() {
   return (
-    <Suspense fallback={<div className="text-bone-300">Loading form…</div>}>
+    <Suspense fallback={<div className="text-dr-slate">Loading form...</div>}>
       <ContactFormInner />
     </Suspense>
-  );
-}
-
-function Field({
-  label,
-  value,
-  onChange,
-  type = 'text',
-  required = false,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  type?: string;
-  required?: boolean;
-}) {
-  return (
-    <label className="block">
-      <span className="text-[11px] uppercase tracking-[0.2em] text-sky-400">{label}</span>
-      <input
-        type={type}
-        value={value}
-        required={required}
-        onChange={(e) => onChange(e.target.value)}
-        className="mt-3 w-full rounded-xl border border-white/10 bg-ink-800/40 px-5 py-4 text-bone-50 placeholder:text-bone-300 focus:border-sky-400 outline-none"
-      />
-    </label>
   );
 }

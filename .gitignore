@@ -39,6 +39,9 @@ yarn-error.log*
 # Claude Code local config
 .claude/settings.local.json
 
+# Internal working docs (not shipped in repo; authoritative lives in the Desktop folder)
+DR_GIVES_SITE_COPY_V1.md
+
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts

@@ -3,96 +3,222 @@
 @tailwind utilities;
 
 :root {
-  --ink-950: #050509;
-  --royal-600: #1E3FA6;
-  --royal-500: #2E4FBE;
-  --sky-400:   #4FBDE8;
-  --bone-50:   #FBFBFB;
+  /* DR Gives brand tokens */
+  --dr-royal: #2D3192;
+  --dr-navy: #1B357A;
+  --dr-sky: #7ECDEE;
+  --dr-white: #FFFFFF;
+  --dr-cream: #F4F1EB;
+  --dr-ink: #0A0A0F;
+  --dr-slate: #4A4A55;
+  --dr-mist: #E8EBF2;
+  --dr-success: #2E7D5B;
+  --dr-warning: #C68A1A;
+  --dr-error: #B3261E;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
 }
 
-html, body {
-  background-color: var(--ink-950);
-  color: var(--bone-50);
+html,
+body {
+  background-color: var(--dr-white);
+  color: var(--dr-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
 }
 
 ::selection {
-  background: var(--royal-600);
-  color: #fff;
+  background: var(--dr-royal);
+  color: var(--dr-white);
 }
 
-/* Cinematic texture on dark surfaces (Baseborn-style subtle grain) */
-.bg-grain {
-  background-image:
-    radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size: 28px 28px, 14px 14px;
-  background-position: 0 0, 14px 14px;
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
+  letter-spacing: -0.01em;
+  color: var(--dr-ink);
 }
 
-/* Radial spotlight for hero */
-.bg-spotlight {
-  background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(30,63,166,0.35), transparent 70%),
-    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(79,189,232,0.12), transparent 70%),
-    #050509;
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
-/* Display serif treatment for cinematic headlines */
-.display {
-  font-family: Georgia, Cambria, "Times New Roman", serif;
-  letter-spacing: -0.04em;
-  line-height: 0.98;
-  font-weight: 500;
+@media (max-width: 767px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
 }
 
-.display-italic {
-  font-family: Georgia, Cambria, "Times New Roman", serif;
-  font-style: italic;
-  letter-spacing: -0.03em;
-  line-height: 1.02;
+p {
+  line-height: 1.6;
 }
 
-/* Fine-tuned link style */
-.prose a {
-  color: #6FCCF0;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+a {
+  color: var(--dr-royal);
   text-decoration-thickness: 1px;
-}
-.prose a:hover {
-  color: #9CDDF7;
+  text-underline-offset: 3px;
 }
 
-/* Accessibility focus ring */
+a:hover {
+  color: var(--dr-navy);
+}
+
+.prose p {
+  margin-bottom: 1rem;
+}
+
+/* Accessibility focus ring, never removed */
 :focus-visible {
-  outline: 2px solid #4FBDE8;
+  outline: 2px solid var(--dr-sky);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* Baseborn-style hairline divider */
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hairline divider */
 .hairline {
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid var(--dr-mist);
 }
 
-/* Vertical writing for side labels */
-.vertical-text {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
+/* Primary button */
+.btn-primary {
+  background-color: var(--dr-royal);
+  color: var(--dr-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition:
+    background-color 200ms ease,
+    transform 200ms ease;
+  text-decoration: none;
+  border: 2px solid var(--dr-royal);
+}
+.btn-primary:hover {
+  background-color: var(--dr-navy);
+  border-color: var(--dr-navy);
+  color: var(--dr-white);
 }
 
-/* Gradient text for emphasis */
-.text-gradient {
-  background: linear-gradient(90deg, #4FBDE8 0%, #D7DEF7 50%, #4FBDE8 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 6s ease-in-out infinite;
+.btn-secondary {
+  background-color: transparent;
+  color: var(--dr-royal);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+  text-decoration: none;
+  border: 2px solid var(--dr-royal);
+}
+.btn-secondary:hover {
+  background-color: var(--dr-royal);
+  color: var(--dr-white);
+}
+
+/* Illustrative photo slot placeholder, used pre-launch for images not yet sourced */
+.photo-slot {
+  background: linear-gradient(
+    135deg,
+    var(--dr-mist) 0%,
+    var(--dr-cream) 100%
+  );
+  border: 1px dashed var(--dr-slate);
+  color: var(--dr-slate);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.875rem;
+  border-radius: 8px;
+}
+
+/* Landscape vs DR Gives outcome stat tiles */
+.stat-tile-landscape {
+  background-color: var(--dr-royal);
+  color: var(--dr-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.stat-tile-outcome {
+  background-color: var(--dr-cream);
+  color: var(--dr-ink);
+  border: 1px solid var(--dr-mist);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.stat-category-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Card surface */
+.card-surface {
+  background-color: var(--dr-white);
+  border: 1px solid var(--dr-mist);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: box-shadow 200ms ease;
+}
+.card-surface:hover {
+  box-shadow: 0 4px 8px rgba(27, 53, 122, 0.08);
+}
+
+.card-cream {
+  background-color: var(--dr-cream);
+  border: 1px solid var(--dr-mist);
+  border-radius: 8px;
+  padding: 1.5rem;
 }

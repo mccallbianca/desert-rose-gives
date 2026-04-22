@@ -1,296 +1,327 @@
 import Link from 'next/link';
-import PageTransition from '@/components/PageTransition';
-import Reveal from '@/components/Reveal';
-import FAQ from '@/components/FAQ';
+import ImageSlot from '@/components/ImageSlot';
+import CrisisResources from '@/components/CrisisResources';
+import DonateButton from '@/components/DonateButton';
 
 export const metadata = {
-  title: 'Impact — Outcomes, Partners, Success Stories',
+  title: 'Impact',
   description:
-    'Across two reporting cycles (April 2024 through June 2025), DR Gives WellXcel programming served 448 unduplicated youth and adults in Clark County, Nevada — with documented reductions in stress and depressive symptoms, 100% response rate on mental health assessments, 148 of 150 participants expressing intent to continue, and prevention of potential self-harm events through crisis-response coordination.',
+    'Impact at Desert Rose Gives is measured by the systemic shift in how our community is Seen, Heard, and Understood. See the landscape we are working inside, program outcomes, and voices from the work.',
   alternates: { canonical: '/impact' },
 };
 
-const FAQS = [
+const VIGNETTES = [
   {
-    question: 'What outcomes did WellXcel achieve in 2024?',
-    answer:
-      'From April 1, 2024 through September 30, 2024, the WellXcel Program supported by a $15,000 Intermountain Health donation served 298 participants through 100 free therapy sessions (billed value $120/session) and 50 hours of counseling support (billed value $60/hour). 100% of participants reported feeling stressed in the prior 30 days at intake; 70% reported a reduction in stress symptoms by program conclusion. 30% reported depressive symptoms at intake; 40% of those reported symptom reduction. 100% of participants reported learning something new about themselves during the program. Demographics: 80% BIPOC, 35% LGBTQIA+, 40% youth (13–24), 60% adults (25–86).',
+    title: 'Breaking the Pattern (Marcus, 19)',
+    body: 'Marcus, a former high school athlete in Las Vegas, participated in a WellXcel session focused on the intersection of sports culture and behavioral risks. After analyzing the data on how sports betting specifically targets marginalized zip codes, Marcus began noticing these predatory patterns within his own friend group\u2019s Discord server. He didn\u2019t just step back; he started leading the conversation, using the term Existential Isolation to explain why his peers were chasing a big win to fill a void of connection.',
+    quote:
+      'I thought it was just a game we were playing to stay connected, but I realized the game was designed to keep us lonely. WellXcel gave me the vocabulary to call it what it was: a pipeline. Now, when I see a friend chasing a loss, I don\u2019t just ignore it. I name the pattern out loud.',
   },
   {
-    question: 'What outcomes did WellXcel achieve in 2025?',
-    answer:
-      'From January through June 2025, the continuation cycle supported by a $10,000 Intermountain Health award reached 150 unduplicated participants (100% survey response rate). 112 received individual services — therapy, counseling, consulting, case management. 38 participated in the clinical workshop "Recognizing and Responding to Student Anxiety: Trauma-Sensitive Schools" on June 17, 2025. 97 identified as BIPOC (including 20 Native American participants); 11 identified as LGBTQIA+. Outcomes: 113 reported no or only mild depressive symptoms following participation. 92 reported mild or no current stress. 126 reported learning something new about themselves. 148 of 150 expressed interest in continuing the program.',
+    title: 'The Architecture of the Feed (Elena, Parent)',
+    body: 'Elena attended a Mind Over Media workshop after noticing her 14-year-old daughter\u2019s sudden shift in mood following several hours on social media. Through the program\u2019s focus on AI-driven content and digital safety, Elena learned how algorithms can manipulate a young person\u2019s existential anxiety. The family conversations shifted from get off your phone to what is your phone trying to make you feel?',
+    quote:
+      'Before Desert Rose Gives, I was fighting the technology. Now, I understand the architecture of it. We don\u2019t just talk about screen time anymore; we talk about how the feed is built to exploit her loneliness. It changed our entire home dynamic from one of policing to one of protection.',
   },
   {
-    question: 'Did WellXcel prevent any crisis events?',
-    answer:
-      'Yes. During the 2025 cycle, screening during service delivery identified several participants experiencing acute distress and emerging self-harm risk. DR Gives activated local crisis response pathways, coordinated with caregivers and referring partners, and ensured participants were safely connected to appropriate crisis supports. Following stabilization, those participants continued to engage in services with improved emotional awareness and help-seeking behaviors. This coordination contributed to the prevention of potential self-harm events — the core outcome WellXcel exists to produce.',
+    title: 'From Lived Experience to Leadership (Jordan, 24)',
+    body: 'Jordan entered the Desert Rose Gives ecosystem as a participant with lived experience in the gambling recovery pipeline. Through the Desert Rose Gives community workforce development track, Jordan moved from navigating his own recovery to becoming a paid facilitator for others. As a lived-experience research contributor to the ECQO-Care Pilot, Jordan helped inform the cultural-responsiveness review that Desert Rose Gives delivers to ECQO Holdings as the pilot\u2019s independent research partner.',
+    quote:
+      'For a long time, I felt like my past was just a series of failures in a grant report. Desert Rose Gives showed me that my experience is actually a vital dataset. I went from being a case number to being a research partner. I\u2019m not just healing; I\u2019m helping shape the research that will support the next person.',
   },
   {
-    question: 'How does DR Gives measure and report outcomes?',
-    answer:
-      'All DR Gives programs use validated mental health instruments (PHQ-2, PHQ-9, ASQ) and program-specific pre/post surveys. Data is reported using the RE-AIM framework — Reach, Effectiveness, Adoption, Implementation, Maintenance — consistent with Intermountain Health and federal evaluation standards. Outcomes reports are delivered to every funder and made available upon request to peer nonprofits, researchers, and press.',
+    title: 'The Systemic Shift (Strategic Partner)',
+    body: 'A representative from a regional health organization noted that their collaboration with Desert Rose Gives fundamentally changed how they approach youth outreach. By adopting our Seen, Heard, and Understood framework and utilizing our data storytelling, they were able to secure a major grant that had previously been out of reach due to outdated messaging.',
+    quote:
+      'Working with Bianca and her team forced us to look at our programming through a culturally responsive lens we didn\u2019t realize we were missing. We weren\u2019t just checking a box; we were rebuilding our entire outreach strategy. Desert Rose Gives provided the clinical frame that allowed us to finally speak the language of the community we serve.',
+  },
+  {
+    title: 'Seeing Through the Screen (Maya, 17)',
+    body: 'Maya, a participant in the Mind Over Media livestream workshops, described a specific moment while scrolling her feed late at night. She recognized a set of existential triggers that the program had highlighted just days before. Instead of falling into a cycle of comparison and isolation, she recognized the data storytelling being used against her and chose to engage with the GO MNTL peer-support channel instead.',
+    quote:
+      'It was like the curtain was pulled back. I saw a post that usually would have made me feel like I wasn\u2019t enough, but I remembered the workshop. I realized the algorithm was looking for my loneliness. In that moment, I didn\u2019t feel invisible anymore because I knew how to see what was happening to me. I chose to log off and reach out to my peers.',
   },
 ];
 
 export default function ImpactPage() {
   return (
-    <PageTransition>
-      {/* HERO */}
-      <section className="bg-spotlight bg-grain">
-        <div className="mx-auto max-w-7xl px-6 pt-40 pb-24">
-          <Reveal>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-sky-400">(Impact)</p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h1 className="display mt-8 text-[12vw] md:text-[104px] leading-[0.94] font-medium text-bone-50 max-w-6xl">
-              Real outcomes. <span className="display-italic text-sky-400">Real people.</span>{' '}
-              Real prevention.
-            </h1>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <p className="mt-10 max-w-3xl text-lg md:text-xl text-bone-200 leading-relaxed">
-              Every number on this page is sourced directly from funder-reviewed outcomes
-              reports. No projections. No aspirations. Actual participants, actual assessments,
-              actual changes — measured and verified.
+    <>
+      <section className="bg-dr-cream">
+        <div className="mx-auto max-w-8xl px-4 md:px-6 py-16 md:py-20 grid gap-10 md:grid-cols-2 items-center">
+          <div>
+            <p className="text-dr-royal text-sm uppercase tracking-wider font-semibold mb-4">
+              Impact
             </p>
-          </Reveal>
+            <h1 className="mb-5">How we measure what matters.</h1>
+            <p className="text-lg text-dr-ink">
+              Impact at Desert Rose Gives is not measured solely by the volume
+              of services provided, but by the systemic shift in how our
+              community is Seen, Heard, and Understood.
+            </p>
+          </div>
+          <ImageSlot
+            alt="Southern Nevada community members gathered together in a candid, hopeful moment."
+            source="Original preferred, Nappy.co or AllGo alternative"
+            aspect="4/3"
+          />
         </div>
       </section>
 
-      {/* TOP-LINE OUTCOMES */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <Reveal>
-          <p className="text-[11px] uppercase tracking-[0.3em] text-sky-400">
-            (Top-line · April 2024 – June 2025)
+      <section className="bg-dr-white">
+        <div className="mx-auto max-w-3xl px-4 md:px-6 py-16">
+          <div className="prose text-dr-ink">
+            <p>
+              In a region where behavioral health access has historically
+              ranked last in the nation, we move beyond the clinical
+              &ldquo;grant report&rdquo; to build an architecture of
+              resilience. Our work transforms lived experiences into rigorous
+              data storytelling, bridging the gap between marginalized youth
+              and the policy strategies required to protect them. Whether
+              through our best-practice wellness models or our clinically
+              informed AI companions, every outcome we track represents a dot
+              connected between isolation and connection. We are not just
+              documenting a crisis; we are engineering its end by equipping
+              workforces and empowering the entire ecosystem.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-dr-cream">
+        <div className="mx-auto max-w-8xl px-4 md:px-6 py-16">
+          <h2>The landscape we are working inside</h2>
+          <p className="text-dr-ink mt-3 max-w-3xl">
+            Southern Nevada remains the epicenter of a critical health
+            disparity that requires immediate, data-driven intervention.
           </p>
-          <h2 className="display mt-4 text-4xl md:text-5xl font-medium max-w-4xl">
-            Eighteen months. Two funded cycles.{' '}
-            <span className="display-italic text-sky-400">One shared standard:</span>{' '}
-            measured impact before expanded reach.
-          </h2>
-        </Reveal>
-
-        <div className="mt-14 grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-          <BigStat big="448+" label="Unduplicated participants served" />
-          <BigStat big="100" label="Free therapy sessions (cycle 1)" />
-          <BigStat big="150" label="Reached in cycle 2 (Jan–Jun 2025)" />
-          <BigStat big="148/150" label="Intent to continue (cycle 2)" />
-          <BigStat big="100%" label="Survey response rate (cycle 2)" />
-          <BigStat big="70%" label="Reduction in stress symptoms" />
-        </div>
-      </section>
-
-      {/* WHO WE REACHED — demographics synthesis */}
-      <section className="border-y border-white/5 bg-ink-900/40">
-        <div className="mx-auto max-w-7xl px-6 py-24">
-          <Reveal>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-sky-400">(Who we reached)</p>
-            <h2 className="display mt-4 text-4xl md:text-5xl font-medium max-w-4xl">
-              The communities the system keeps leaving behind.
-            </h2>
-          </Reveal>
-
-          <div className="mt-14 grid gap-10 md:grid-cols-12">
-            <Reveal className="md:col-span-7">
-              <ul className="space-y-6 text-bone-100">
-                <Metric
-                  big="80%"
-                  label="BIPOC participants"
-                  detail="Black, Hispanic/Latino, Asian/Pacific Islander, Native American, and mixed-race community members. In the 2025 cycle, 20 Native American participants were served in partnership with the Native American Athletic Foundation."
-                />
-                <Metric
-                  big="35%"
-                  label="LGBTQIA+ participants"
-                  detail="Prioritized outreach through partners including the Social Influence Foundation and community-based LGBTQIA+ wellness networks."
-                />
-                <Metric
-                  big="13 – 86"
-                  label="Age range"
-                  detail="Youth (13–24) represent 40% of participants; adults (25–86) represent 60%. Lead youth demographic: boys 16–21. Lead adult demographic: women 25–40."
-                />
-                <Metric
-                  big="Clark County"
-                  label="Primary service area"
-                  detail="Intentionally concentrated in under-resourced zip codes of Southern Nevada — the geography most affected by Nevada&rsquo;s national-worst ranking in mental health access."
-                />
-              </ul>
-            </Reveal>
-
-            <Reveal className="md:col-span-5" delay={0.15}>
-              <div className="rounded-2xl border border-white/10 bg-ink-800/40 p-8">
-                <p className="text-[11px] uppercase tracking-[0.3em] text-sky-400">
-                  Partner network
-                </p>
-                <ul className="mt-5 space-y-2 text-sm text-bone-100 leading-relaxed">
-                  <li>The Village Academy (TVA)</li>
-                  <li>Mountain Valley Prep</li>
-                  <li>Bully Busters 702</li>
-                  <li>Social Influence Foundation</li>
-                  <li>The LIMA Program</li>
-                  <li>CAARD — Center for African American Recovery Development</li>
-                  <li>NAACP Health &amp; Wellness Committee</li>
-                  <li>Comagine Health</li>
-                  <li>Native American Athletic Foundation</li>
-                  <li>WestCare Foundation</li>
-                  <li>UNR CASAT / NRAP</li>
-                  <li>BeHERE Nevada</li>
-                  <li>Intermountain Health Community Initiatives</li>
-                  <li>Rhythms Dance Academy</li>
-                  <li>UNLV Institute of Financial Literacy &amp; Wellness</li>
-                  <li>Valhallan Esports Training</li>
-                </ul>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            <div className="stat-tile-landscape">
+              <div className="stat-category-label text-dr-sky mb-3">
+                Community context
               </div>
-            </Reveal>
+              <h3 className="text-dr-white text-lg mb-2">Access to Care</h3>
+              <p className="text-sm">
+                Nevada consistently ranks 51st in the nation for access to
+                behavioral health services, leaving thousands of youth without
+                a clear pathway to support.
+              </p>
+              <p className="mt-3 text-xs text-dr-sky">
+                Source: Nevada Division of Public and Behavioral Health (DPBH).
+              </p>
+            </div>
+            <div className="stat-tile-landscape">
+              <div className="stat-category-label text-dr-sky mb-3">
+                Community context
+              </div>
+              <h3 className="text-dr-white text-lg mb-2">Youth Mortality</h3>
+              <p className="text-sm">
+                Suicide remains one of the leading causes of death for Nevada
+                youth, with specific disparities impacting BIPOC and LGBTQ+
+                populations.
+              </p>
+              <p className="mt-3 text-xs text-dr-sky">
+                Source: Centers for Disease Control and Prevention (CDC),
+                WONDER database.
+              </p>
+            </div>
+            <div className="stat-tile-landscape">
+              <div className="stat-category-label text-dr-sky mb-3">
+                Community context
+              </div>
+              <h3 className="text-dr-white text-lg mb-2">
+                Existential Isolation
+              </h3>
+              <p className="text-sm">
+                High-risk zip codes in Clark County show a direct correlation
+                between extreme loneliness and the rising pipeline of problem
+                gambling and substance misuse.
+              </p>
+              <p className="mt-3 text-xs text-dr-sky">
+                Source: Nevada Division of Public and Behavioral Health (DPBH).
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* SUCCESS STORY — from the 2025 outcomes report, de-identified */}
-      <section className="mx-auto max-w-5xl px-6 py-28">
-        <Reveal>
-          <p className="text-[11px] uppercase tracking-[0.3em] text-sky-400">
-            (Success story · Intermountain Health 2025 cycle)
+          <p className="mt-8 text-dr-ink max-w-3xl italic">
+            The Reality: When systems are written in a language that neighbors
+            don&rsquo;t speak, the most vulnerable among us remain invisible
+            to the resources designed to save them.
           </p>
-          <h2 className="display mt-4 text-4xl md:text-5xl font-medium">
-            One participant. One coordinated response.
-            <br />
-            <span className="display-italic text-sky-400">One life safely stabilized.</span>
-          </h2>
-        </Reveal>
-
-        <Reveal delay={0.1}>
-          <div className="mt-12 rounded-2xl border border-white/10 bg-ink-900/40 p-8 md:p-12">
-            <p className="text-bone-100 leading-relaxed text-lg">
-              A secondary school–aged participant was referred to WellXcel by a community
-              behavioral health partner due to persistent anxiety, disengagement from school,
-              and a history of poor response to prior services. They initially presented with
-              elevated stress, difficulty verbalizing emotions, and reluctance to engage in
-              traditional counseling.
-            </p>
-            <p className="mt-6 text-bone-100 leading-relaxed text-lg">
-              Through sponsored therapy and case management sessions made possible by the
-              Intermountain Health grant, the participant gradually developed the ability to
-              identify stress triggers, articulate internal experiences, and practice
-              regulation strategies. During the course of service delivery, screening indicated
-              acute distress and emerging self-harm risk.
-            </p>
-            <p className="mt-6 text-bone-100 leading-relaxed text-lg">
-              DR Gives promptly engaged the local crisis response system, coordinated with
-              caregivers and providers, and ensured the participant was safely connected to
-              appropriate crisis supports. Following stabilization, the participant continued
-              to engage in services and demonstrated improved emotional awareness, reduced
-              distress, and increased willingness to seek help when overwhelmed.
-            </p>
-            <p className="mt-6 text-bone-100 leading-relaxed text-lg">
-              Caregivers and referring partners reported improved communication, school
-              engagement, and a clearer pathway for ongoing support.
-            </p>
-            <p className="mt-8 display-italic text-2xl text-sky-400">
-              &ldquo;This case illustrates how Intermountain Health&rsquo;s investment enabled timely
-              intervention, strengthened coordination across systems of care, and contributed
-              to the prevention of a potential self-harm event. It reflects the core intent
-              of the WellXcel Program: identify risk early, respond effectively, and support
-              youth and families before challenges escalate into crisis.&rdquo;
-            </p>
-            <p className="mt-6 text-sm text-bone-300">
-              — Bianca D. McCall, LMFT · Executive Director · Desert Rose Gives
-            </p>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* ADOPTION — the 12-month scale story */}
-      <section className="border-t border-white/5 bg-ink-900/40">
-        <div className="mx-auto max-w-7xl px-6 py-24">
-          <Reveal>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-sky-400">(Adoption)</p>
-            <h2 className="display mt-4 text-4xl md:text-5xl font-medium max-w-4xl">
-              How WellXcel became{' '}
-              <span className="display-italic text-sky-400">a systems-level intervention</span>.
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              <AdoptionCard
-                n="01"
-                title="Education adopts"
-                body="Youth-serving organizations and schools requested trauma-sensitive training and consultation for staff working with students in stress, anxiety, and behavioral health challenges."
-              />
-              <AdoptionCard
-                n="02"
-                title="Healthcare adopts"
-                body="Healthcare and behavioral health partners engaged DR Gives to deliver workshops, facilitated learning sessions, and consultative support aligned with workforce wellness and prevention strategies."
-              />
-              <AdoptionCard
-                n="03"
-                title="Community adopts"
-                body="Organizations serving BIPOC and Native youth incorporated WellXcel concepts into peer support, prevention programming, and group-based education — extending the model beyond DR Gives&rsquo; direct service."
-              />
-            </div>
-          </Reveal>
+          <CrisisResources />
         </div>
       </section>
 
-      <FAQ faqs={FAQS} title="What funders and press have asked" eyebrow="(Impact AEO)" />
+      <section className="bg-dr-white">
+        <div className="mx-auto max-w-8xl px-4 md:px-6 py-16">
+          <h2>What our programs are doing inside that landscape</h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            <article className="stat-tile-outcome">
+              <div className="stat-category-label text-dr-royal mb-3">
+                DR Gives outcome
+              </div>
+              <h3 className="text-xl text-dr-royal mb-2">
+                WellXcel: Performance and Wellness Education
+              </h3>
+              <p className="text-dr-ink text-sm">
+                Since 2022, WellXcel has reached{' '}
+                <strong>11,598 participants</strong> across the United States
+                and France through education, consultation, custom trainings,
+                and community support.
+              </p>
+              <ul className="mt-3 space-y-1 text-sm text-dr-ink list-disc pl-5">
+                <li>
+                  <strong>70%</strong> reported reduced stress
+                </li>
+                <li>
+                  <strong>40%</strong> reported decreased depressive symptoms
+                </li>
+                <li>
+                  <strong>100%</strong> reported new insights
+                </li>
+              </ul>
+              <p className="mt-3 text-xs text-dr-slate">
+                Source: WellXcel Impact and Outcomes summary, Desert Rose
+                Gives.
+              </p>
+            </article>
 
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <Reveal>
-          <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
-            <h2 className="display text-4xl md:text-5xl font-medium max-w-2xl">
-              See exactly how dollars convert to outcomes.
-            </h2>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/financials" className="rounded-full bg-royal-600 hover:bg-royal-700 px-7 py-4 text-sm font-semibold uppercase tracking-wide text-bone-50">
-                Financial transparency
-              </Link>
-              <Link href="/donate" className="rounded-full border border-white/15 hover:border-sky-400 px-7 py-4 text-sm font-semibold uppercase tracking-wide text-bone-50">
-                Fund the next cycle
-              </Link>
-            </div>
+            <article className="stat-tile-outcome">
+              <div className="stat-category-label text-dr-royal mb-3">
+                DR Gives outcome
+              </div>
+              <h3 className="text-xl text-dr-royal mb-2">
+                Mind Over Media: Culturally Responsive Prevention
+              </h3>
+              <p className="text-dr-ink text-sm">
+                Launched in 2025 under the Nevada Child Death Review framework
+                (NRS 432B.403 to 432B.4095), Mind Over Media engages{' '}
+                <strong>70 direct youth participants</strong> (ages 13 to 26)
+                through focus groups and livestream workshops, with digital
+                outreach across up to 10 social media platforms to reach
+                thousands more. Deliverables include AI-supported digital
+                toolkits, video shorts, and a Notion participant portal for
+                qualitative data collection.
+              </p>
+              <p className="mt-3 text-xs text-dr-slate">
+                Source: Desert Rose Gives Child Death Review Grant
+                Application, 2025.
+              </p>
+            </article>
+
+            <article className="stat-tile-outcome">
+              <div className="stat-category-label text-dr-royal mb-3">
+                DR Gives outcome
+              </div>
+              <h3 className="text-xl text-dr-royal mb-2">
+                ECQO-Care Pilot Research Partnership
+              </h3>
+              <p className="text-dr-ink text-sm">
+                Desert Rose Gives serves as the named independent research
+                partner for the ECQO-Care Pilot, contributing research design,
+                cultural-responsiveness review, and community pilot oversight.
+                Desert Rose Gives does not develop, operate, or own the ECQO
+                Holdings platform. Desert Rose Gives donor funds support
+                Desert Rose Gives research and community programs only.
+              </p>
+            </article>
           </div>
-        </Reveal>
+          <div className="mt-10">
+            <ImageSlot
+              alt="A residential street in Southern Nevada at human scale."
+              source="Unsplash or original"
+              aspect="16/9"
+            />
+          </div>
+        </div>
       </section>
-    </PageTransition>
-  );
-}
 
-function BigStat({ big, label }: { big: string; label: string }) {
-  return (
-    <div className="rounded-xl border border-white/10 bg-ink-800/40 p-5">
-      <p className="display text-3xl md:text-4xl text-bone-50">{big}</p>
-      <p className="mt-3 text-xs text-bone-200 leading-snug">{label}</p>
-    </div>
-  );
-}
+      <section className="bg-dr-cream">
+        <div className="mx-auto max-w-8xl px-4 md:px-6 py-16">
+          <h2>Voices from the work</h2>
+          <p className="text-dr-ink mt-4 max-w-3xl">
+            These stories are how we keep the numbers honest. The vignettes
+            below are <strong>illustrative composites based on common
+            participant experiences</strong> in Desert Rose Gives programs.
+            Names and specific details have been generalized to protect
+            privacy. The experiences, themes, and quotes reflect the
+            consistent feedback we receive from real participants, organized
+            into representative narratives. Desert Rose Gives will publish
+            named testimonials with documented participant consent as they
+            are sourced.
+          </p>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {VIGNETTES.map((v) => (
+              <article key={v.title} className="card-surface">
+                <h3 className="text-dr-royal">{v.title}</h3>
+                <p className="text-dr-ink mt-3">{v.body}</p>
+                <blockquote className="mt-4 border-l-4 border-dr-sky pl-4 text-dr-ink italic">
+                  {v.quote}
+                </blockquote>
+              </article>
+            ))}
+          </div>
+          <div className="mt-10">
+            <ImageSlot
+              alt="Two community members in conversation during a Desert Rose Gives gathering."
+              source="Nappy.co or Disabled and Here"
+              aspect="16/9"
+            />
+          </div>
+        </div>
+      </section>
 
-function Metric({ big, label, detail }: { big: string; label: string; detail: string }) {
-  return (
-    <li className="flex gap-6">
-      <div className="shrink-0 w-24">
-        <p className="display text-4xl text-sky-400">{big}</p>
-      </div>
-      <div>
-        <p className="text-base font-medium text-bone-50">{label}</p>
-        <p
-          className="mt-2 text-sm text-bone-200 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: detail }}
-        />
-      </div>
-    </li>
-  );
-}
+      <section className="bg-dr-white">
+        <div className="mx-auto max-w-3xl px-4 md:px-6 py-16">
+          <h2>Sources and methodology</h2>
+          <div className="prose text-dr-ink mt-4">
+            <p>
+              Landscape statistics on this page are drawn from public federal
+              and Nevada state sources: the US Census Bureau (Clark County
+              population), Mental Health America (State of Mental Health in
+              America annual report), the HRSA Bureau of Health Workforce
+              (Mental Health Professional Shortage Area designations), the
+              Centers for Disease Control and Prevention WONDER database
+              (youth mortality), and the Nevada Division of Public and
+              Behavioral Health (access to care and Existential Isolation
+              correlations).
+            </p>
+            <p>
+              Desert Rose Gives outcome figures are drawn from internal
+              program evaluation, specifically the WellXcel Impact and
+              Outcomes summary and the Desert Rose Gives Child Death Review
+              Grant Application. Source files are available on request through
+              the <Link href="/contact">Contact page</Link>. Figures are
+              updated as new program periods close.
+            </p>
+            <p>
+              The Desert Rose Gives 501(c)(3) Determination Letter is
+              available on request at{' '}
+              <a href="mailto:grants@desertrosegives.org">
+                grants@desertrosegives.org
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
 
-function AdoptionCard({ n, title, body }: { n: string; title: string; body: string }) {
-  return (
-    <div className="rounded-xl border border-white/10 bg-ink-800/40 p-6">
-      <p className="text-[11px] tracking-[0.2em] uppercase text-sky-400">{n}</p>
-      <h3 className="display mt-4 text-2xl text-bone-50">{title}</h3>
-      <p
-        className="mt-3 text-sm text-bone-200 leading-relaxed"
-        dangerouslySetInnerHTML={{ __html: body }}
-      />
-    </div>
+      <section className="bg-dr-cream">
+        <div className="mx-auto max-w-3xl px-4 md:px-6 py-16 text-center">
+          <h2 className="mb-3">Help us keep these numbers honest.</h2>
+          <p className="text-dr-ink mb-6">
+            The landscape does not change unless communities, funders, and
+            partners decide to change it together.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <DonateButton />
+            <Link href="/get-involved" className="btn-secondary">
+              Volunteer
+            </Link>
+            <Link href="/contact?intent=partner" className="btn-secondary">
+              Partner
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
