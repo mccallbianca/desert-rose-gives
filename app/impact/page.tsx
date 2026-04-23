@@ -60,9 +60,10 @@ export default function ImpactPage() {
             </p>
           </div>
           <ImageSlot
+            src="/images/impact-opening.jpg"
             alt="Southern Nevada community members gathered together in a candid, hopeful moment."
-            source="Original preferred, Nappy.co or AllGo alternative"
             aspect="4/3"
+            priority
           />
         </div>
       </section>
@@ -226,8 +227,8 @@ export default function ImpactPage() {
           </div>
           <div className="mt-10">
             <ImageSlot
+              src="/images/impact-neighborhood.jpg"
               alt="A residential street in Southern Nevada at human scale."
-              source="Unsplash or original"
               aspect="16/9"
             />
           </div>
@@ -261,8 +262,8 @@ export default function ImpactPage() {
           </div>
           <div className="mt-10">
             <ImageSlot
+              src="/images/impact-conversation.jpg"
               alt="Two community members in conversation during a Desert Rose Gives gathering."
-              source="Nappy.co or Disabled and Here"
               aspect="16/9"
             />
           </div>

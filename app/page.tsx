@@ -34,9 +34,10 @@ export default function HomePage() {
             </div>
           </div>
           <ImageSlot
+            src="/images/home-hero.jpg"
             alt="Community members of different ages gathered together outdoors in Southern Nevada during a Desert Rose Gives event."
-            source="Original preferred, Nappy.co stock alternative"
             aspect="4/3"
+            priority
           />
         </div>
       </section>
@@ -66,8 +67,8 @@ export default function HomePage() {
           <div className="grid gap-8 md:grid-cols-2">
             <article className="card-surface">
               <ImageSlot
+                src="/images/card-wellxcel.jpg"
                 alt="Young people in conversation at a community center in Southern Nevada."
-                source="Nappy.co"
                 aspect="16/9"
                 className="mb-4"
               />
@@ -88,8 +89,8 @@ export default function HomePage() {
             </article>
             <article className="card-surface">
               <ImageSlot
+                src="/images/card-partnerships.jpg"
                 alt="Community partners and organizers meeting around a table in a shared workspace."
-                source="Stock from AllGo or Unsplash"
                 aspect="16/9"
                 className="mb-4"
               />
@@ -275,8 +276,8 @@ export default function HomePage() {
           </div>
           <div className="mt-10">
             <ImageSlot
+              src="/images/home-volunteers.jpg"
               alt="Volunteers setting up for a Desert Rose Gives community event in Southern Nevada."
-              source="Original preferred, Nappy.co alternative"
               aspect="16/9"
             />
           </div>

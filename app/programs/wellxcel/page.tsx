@@ -33,9 +33,10 @@ export default function WellXcelPage() {
             </p>
           </div>
           <ImageSlot
+            src="/images/wellxcel-hero.jpg"
             alt="Young people seated in a community session during a WellXcel program in Nevada."
-            source="Original strongly preferred, Nappy.co alternative"
             aspect="4/3"
+            priority
           />
         </div>
       </section>
@@ -112,8 +113,8 @@ export default function WellXcelPage() {
           </div>
           <div className="mt-8">
             <ImageSlot
+              src="/images/wellxcel-facilitator.jpg"
               alt="A peer facilitator speaking with community members during a WellXcel session."
-              source="Nappy.co or AllGo, original preferred"
               aspect="16/9"
             />
           </div>
@@ -164,8 +165,8 @@ export default function WellXcelPage() {
           </p>
           <div className="mt-8">
             <ImageSlot
+              src="/images/wellxcel-phone-intergenerational.jpg"
               alt="A young person and an older adult looking at a phone screen together in conversation."
-              source="Nappy.co or Unsplash"
               aspect="16/9"
             />
           </div>

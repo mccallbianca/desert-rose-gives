@@ -27,9 +27,10 @@ export default function ContactPage() {
             </p>
           </div>
           <ImageSlot
+            src="/images/programs-header.jpg"
             alt="A Desert Rose Gives team member responding to community messages from a warm workspace."
-            source="Nappy.co or AllGo, original preferred"
             aspect="4/3"
+            priority
           />
         </div>
       </section>
@@ -132,8 +133,8 @@ export default function ContactPage() {
             </div>
 
             <ImageSlot
+              src="/images/about-desert-rose.jpg"
               alt="A notepad, pen, and coffee cup on a table, a calm human-scale composition."
-              source="Unsplash or Pexels"
               aspect="16/9"
               className="mt-10"
             />
@@ -172,8 +173,8 @@ export default function ContactPage() {
               will prioritize it.
             </p>
             <ImageSlot
+              src="/images/impact-neighborhood.jpg"
               alt="A Southern Nevada landscape at warm morning or evening light."
-              source="Unsplash"
               aspect="16/9"
               className="mt-6"
             />

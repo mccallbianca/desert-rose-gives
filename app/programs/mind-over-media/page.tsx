@@ -29,9 +29,10 @@ export default function MindOverMediaPage() {
             </p>
           </div>
           <ImageSlot
+            src="/images/card-wellxcel.jpg"
             alt="A small group of young people watching and discussing media together in a community setting."
-            source="Unsplash or Nappy.co, original preferred"
             aspect="4/3"
+            priority
           />
         </div>
       </section>
@@ -95,12 +96,12 @@ export default function MindOverMediaPage() {
               implementation strategy to maximize accessibility and
               engagement. Our methodology is built on a multi-platform digital
               outreach model that integrates real-time feedback with scalable
-              content production. We use StreamYard as our broadcasting tool
-              to deliver interactive educational workshops simultaneously
-              across up to ten social media platforms, allowing for live
-              engagement and Q&amp;A with expert panelists. To maintain a
-              consistent and relatable voice, we use Jasper AI as our digital
-              content production tool, generating video shorts, GIFs, and
+              content production. We use professional livestream broadcasting
+              tools to deliver interactive educational workshops
+              simultaneously across up to ten social media platforms,
+              allowing for live engagement and Q&amp;A with expert panelists.
+              To maintain a consistent and relatable voice, we use AI-assisted
+              digital content production to generate video shorts, GIFs, and
               digital toolkits that simplify complex behavioral health topics
               for both youth and caregivers.
             </p>
@@ -108,24 +109,19 @@ export default function MindOverMediaPage() {
               This high-tech approach is grounded by high-touch community
               engagement. We facilitate focus groups to ensure all campaign
               materials are culturally relevant and authentically reflect
-              youth experiences. Central to our methodology is a participant
-              portal built in Notion, which serves as a hub for qualitative
-              data collection and resource sharing. By tracking engagement
-              metrics and changes in attitudes in real time, we can adapt our
+              youth experiences. Central to our methodology is a custom
+              participant portal that serves as a hub for qualitative data
+              collection and resource sharing. By tracking engagement metrics
+              and changes in attitudes in real time, we can adapt our
               programming to meet emerging community needs, ensuring that our
               prevention efforts drive measurable, systemic improvements in
               child safety.
             </p>
-            <p className="text-sm text-dr-slate italic">
-              Product and service names mentioned are trademarks of their
-              respective owners; their mention does not imply endorsement or
-              sponsorship.
-            </p>
           </div>
           <div className="mt-8">
             <ImageSlot
+              src="/images/mom-phone-closeup.jpg"
               alt="Close-up of hands holding a phone while a second person gestures toward the screen in conversation."
-              source="Unsplash or AllGo"
               aspect="16/9"
             />
           </div>
@@ -247,8 +243,8 @@ export default function MindOverMediaPage() {
           </div>
           <div className="mt-8">
             <ImageSlot
+              src="/images/mom-notebook.jpg"
               alt="A participant writing in a notebook during a Mind Over Media community session."
-              source="Nappy.co or Unsplash"
               aspect="16/9"
             />
           </div>

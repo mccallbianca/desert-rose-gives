@@ -67,7 +67,6 @@ export default function GetInvolvedPage() {
           </div>
           <ImageSlot
             alt="Volunteers at work during a Desert Rose Gives community event in Southern Nevada."
-            source="Original preferred, Nappy.co alternative"
             aspect="4/3"
           />
         </div>
@@ -77,8 +76,8 @@ export default function GetInvolvedPage() {
       <section id="donate" className="bg-dr-cream scroll-mt-24">
         <div className="mx-auto max-w-8xl px-4 md:px-6 py-16 grid gap-10 md:grid-cols-2">
           <ImageSlot
+            src="/images/impact-opening.jpg"
             alt="Community members gathered together in a Desert Rose Gives program space."
-            source="AllGo or Nappy.co"
             aspect="4/3"
           />
           <div>
@@ -180,7 +179,6 @@ export default function GetInvolvedPage() {
           </div>
           <ImageSlot
             alt="Partner organization representatives working together around a shared table."
-            source="Unsplash or original"
             aspect="4/3"
           />
         </div>
@@ -190,8 +188,8 @@ export default function GetInvolvedPage() {
       <section className="bg-dr-cream">
         <div className="mx-auto max-w-8xl px-4 md:px-6 py-16 grid gap-10 md:grid-cols-2">
           <ImageSlot
+            src="/images/getinvolved-inkind.jpg"
             alt="A community space being set up for a Desert Rose Gives session, with chairs, materials, and refreshments."
-            source="Unsplash or Pexels"
             aspect="4/3"
           />
           <div>

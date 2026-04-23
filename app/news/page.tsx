@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import ImageSlot from '@/components/ImageSlot';
 import NewsletterForm from '@/components/NewsletterForm';
 
@@ -28,9 +29,10 @@ export default function NewsPage() {
           </p>
           <div className="mt-10">
             <ImageSlot
+              src="/images/home-hero.jpg"
               alt="A candid moment from a recent Desert Rose Gives community event."
-              source="Original preferred, Nappy.co or AllGo"
               aspect="16/9"
+              priority
             />
           </div>
         </div>
@@ -41,10 +43,14 @@ export default function NewsPage() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {PLACEHOLDERS.map((n) => (
               <article key={n} className="card-surface">
-                <div className="photo-slot aspect-[16/9] mb-4 rounded">
-                  <span className="text-sm">
-                    Desert Rose Gives placeholder graphic
-                  </span>
+                <div className="aspect-[16/9] mb-4 rounded overflow-hidden relative bg-dr-mist">
+                  <Image
+                    src="/images/news-placeholder.svg"
+                    alt="Desert Rose Gives placeholder graphic for an upcoming post."
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
                 </div>
                 <h3 className="text-dr-royal">Post title pending</h3>
                 <p className="text-dr-slate text-sm mt-1">
@@ -77,8 +83,8 @@ export default function NewsPage() {
           </div>
           <div className="mt-10">
             <ImageSlot
+              src="/images/impact-conversation.jpg"
               alt="A community member reading an email newsletter on a device in a warm indoor setting."
-              source="AllGo or Nappy.co"
               aspect="16/9"
             />
           </div>

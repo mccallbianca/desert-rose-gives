@@ -38,36 +38,35 @@ const BOARD = [
   {
     name: 'Bianca D. McCall, LMFT',
     role: 'Founder and President',
-    image: '/board/board_01_bianca_mccall_founder_president.jpg',
+    image: '/images/board_01_bianca.jpg',
     alt: 'Portrait of Bianca D. McCall, LMFT, Founder and President of Desert Rose Gives. Black and white editorial photograph.',
-    bio: 'Bio finalization in progress.',
-    draft: true,
+    bio: 'Bianca D. McCall is a professional women\u2019s basketball player in retirement, licensed clinical therapist, and renowned TED speaker having presented at over 50 conferences since 2023. Bianca has more than 25 years of expertise in behavioral sciences, with a thriving mental wellness and performance consulting practice for public departments, private workforces, education and sports ecosystems in 13 U.S. states and three countries. She is a trusted voice at the intersections of existential concerns, mental health, and AI technology in underserved and under-resourced groups, including the professional development of special populations and performance-based workforces. Bianca is an advisor for the U.S. Department of Health and Human Services and a contributor to National Best Practices for prevention programming. She has delivered keynotes, training, education, and consulting that resonate across global wellness, media, sports, and entertainment industries.',
   },
   {
     name: 'Rachel Kaplan',
     role: 'Vice President',
-    image: '/board/board_02_rachel_kaplan_vice_president.jpg',
+    image: '/images/board_02_rachel.jpg',
     alt: 'Portrait of Rachel Kaplan, Vice President of the Desert Rose Gives Board of Directors.',
     bio: 'Rachel Kaplan, M.Ed., B.S., is Vice President of the Desert Rose Gives Board of Directors. Rachel is a seasoned educator and administrator with over 20 years of experience. Raised in the Midwest, she earned her B.A. in Elementary Education with minors in Math and English, and her M.S. in Leadership and Curriculum Instruction from Oakland University in Rochester, Michigan. Throughout her career, Rachel has served in various teaching, administrative, and supervisory roles across public and charter schools nationwide. She moved to Las Vegas 25 years ago and spent nearly two decades teaching in the Clark County School District.',
   },
   {
     name: 'Heather L. Parisi',
     role: 'Secretary',
-    image: '/board/board_03_heather_parisi_secretary.jpg',
+    image: '/images/board_03_heather.jpg',
     alt: 'Portrait of Heather L. Parisi, Secretary of the Desert Rose Gives Board of Directors.',
     bio: 'Heather L. Parisi is a Senior Project Manager with 25 years of experience in product development, manufacturing, supply chain, and quality assurance. Inspired by her athleticism and her own healthy lifestyle, Heather introduced Flip2BFit, a board game blending strategy, exercise, and evidence-based experience to create a new PE offering accredited within PE curricula across the United States. Heather\u2019s philanthropic spirit found the culmination of her dream in Uganda, where she established a small nursery and primary school with a mission to bring a healthier lifestyle to world communities.',
   },
   {
     name: 'Steven Ness',
     role: 'Board Member',
-    image: '/board/board_04_steven_ness_board_member.jpg',
+    image: '/images/board_04_steven.jpg',
     alt: 'Portrait of Steven Ness, Board Member of Desert Rose Gives.',
     bio: 'Steven Ness brings over 20 years of sophisticated banking and finance experience to the Desert Rose Gives board, specializing in the financial health and strategic growth of business owners and affluent individuals. Within our mission to address regional disparities, Steven provides the concrete financial framework and strategic guidance necessary to empower our community leaders and ensure their initiatives are built on a sustainable foundation.',
   },
   {
     name: 'Morris Jackson II',
     role: 'Board Member',
-    image: '/board/board_05_morris_jackson_ii_board_member.jpg',
+    image: '/images/board_05_morris.jpg',
     alt: 'Portrait of Morris Jackson II, Board Member of Desert Rose Gives.',
     bio: 'A 24-year veteran of the financial services and banking industry, Morris Jackson II leads the Las Vegas market for U.S. Bank\u2019s Consumer and Business Banking division. He oversees a team of more than 500 retail and business bankers across 64 retail branches, focused on deepening relationships with existing customers and acquiring new ones. Known for his servant leadership and entrepreneurial mindset, he consistently delivers data-driven strategies that enhance customer experiences, increase market share, and fuel sustained growth. Morris is also a successful franchise owner and operator of three Valhallan Esports Training locations in Las Vegas, Nevada; Folsom, California; and Cornelius, North Carolina.',
   },
@@ -112,9 +111,10 @@ export default function AboutPage() {
             <h1>Our founding story.</h1>
           </div>
           <ImageSlot
+            src="/images/about-desert-rose.jpg"
             alt="A desert rose in bloom against dry soil, symbolic of the Desert Rose Gives name."
-            source="Unsplash or Pexels, AI acceptable"
             aspect="4/3"
+            priority
           />
         </div>
       </section>
@@ -226,8 +226,8 @@ export default function AboutPage() {
           </p>
           <div className="mt-8">
             <ImageSlot
+              src="/images/about-partners.jpg"
               alt="Community partners meeting together around a shared workspace in Southern Nevada."
-              source="AllGo or Unsplash, AI acceptable"
               aspect="16/9"
             />
           </div>
@@ -272,8 +272,8 @@ export default function AboutPage() {
           </div>
           <div className="mt-6">
             <ImageSlot
+              src="/images/about-family.jpg"
               alt="Multiple generations of a family spending time together in a Southern Nevada home."
-              source="Nappy.co, original strongly preferred for Urban Native representation"
               aspect="4/3"
             />
           </div>

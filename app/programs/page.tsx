@@ -29,16 +29,17 @@ export default function ProgramsIndexPage() {
       <section className="bg-dr-white">
         <div className="mx-auto max-w-8xl px-4 md:px-6 py-16">
           <ImageSlot
+            src="/images/programs-header.jpg"
             alt="A small group of community members gathered in a circle during a Desert Rose Gives program session."
-            source="Nappy.co, original preferred"
             aspect="16/9"
             className="mb-10"
+            priority
           />
           <div className="grid gap-8 md:grid-cols-2">
             <article className="card-surface flex flex-col">
               <ImageSlot
+                src="/images/card-wellxcel.jpg"
                 alt="Young people in conversation in a community space, one holding a phone."
-                source="Nappy.co"
                 aspect="16/9"
                 className="mb-4"
               />
@@ -57,8 +58,8 @@ export default function ProgramsIndexPage() {
             </article>
             <article className="card-surface flex flex-col">
               <ImageSlot
+                src="/images/programs-mom-card.jpg"
                 alt="A small group watching and discussing media together in a community setting."
-                source="Unsplash or AllGo"
                 aspect="16/9"
                 className="mb-4"
               />
